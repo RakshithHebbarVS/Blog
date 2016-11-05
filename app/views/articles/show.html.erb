@@ -1,0 +1,32 @@
+<h2><%= @article.title %></h2>
+<%= @article.body %><br/>
+<% if @article.user_id == current_user.id %>
+	<%= link_to "Edit article", edit_article_path(@article.id) %>
+	<%= link_to "Delete article", article_path(@article.id), method: :delete, data: {confirm: "Are you sure"} %>
+<% end %>
+
+<br/><br/><b>Comments</b>
+<ol>
+	<% @comments.each do |comment| %>
+		<li><%= comment.body %></li>
+		<% if comment.user_id == current_user.id %>
+			<%= link_to "Delete", comments_path(comment.id), method: :delete, data: {confirm: "Are you sure"}  %>
+		<% end %>
+	<% end %>
+</ol>
+
+<b>Add comment</b>
+<%= form_for @comment do |f| %>
+	
+		
+	
+	<%= f.text_area :body %>
+	<%= f.hidden_field :article_id, :value => @article.id %><br/>
+
+
+
+
+	<%= f.submit "Comment" %>
+<% end %>
+<br/>
+<%= link_to "Back to articles", articles_path %>

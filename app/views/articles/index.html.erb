@@ -1,0 +1,13 @@
+<br/><br/>
+<%= link_to "Articles by category", categories_path %> 
+<%= link_to "My Articles", "/articles/my_articles"%>
+<br/><br/><%= link_to "Add Article", new_article_path %><br/><br/>
+
+<ol>
+	<% @article.each do |article| %>
+		<li><%= link_to article.title, article_path(article.id) %></li>
+	<% end %>
+</ol> 
+
+
+

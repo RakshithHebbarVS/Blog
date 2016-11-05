@@ -1,0 +1,11 @@
+<h2>Add new category</h2>
+<%= link_to "Show categories", categories_path %><br/>
+
+<%= form_for @category do |f| %>
+	<br/>	
+	<%= f.label :name %><br/>
+	<%= f.text_field :name %><br/>
+
+	<%= f.submit "Add category" %>
+
+<% end %> 

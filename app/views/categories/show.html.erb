@@ -1,0 +1,8 @@
+<h2>Articles by category</h2>
+<%= link_to "View categories", categories_path %><br/><br/>
+<%= @category.name %>
+<ol>
+	<% @category.articles.each do |article| %>
+		<li><%= link_to article.title, article_path(article.id) %></li>
+	<% end %>
+</ol>
